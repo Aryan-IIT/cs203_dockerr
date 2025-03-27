@@ -1,0 +1,10 @@
+version: '3.8'
+
+services:
+  frontend:
+    image: unknown77777/fastapi:1
+    ports:
+      - "9567:9567"
+    environment:
+      - BACKEND_URL=http://10.160.0.4:9567
+
