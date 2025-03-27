@@ -1,0 +1,27 @@
+version: '3.8'
+
+services:
+  es:
+    image: unknown77777/es-image
+    container_name: es
+    networks:
+      - backend
+    environment:
+      - discovery.type=single-node
+    restart: unless-stopped
+
+  backend:
+    image: unknown77777/fastapi:2
+    container_name: backend
+    networks:
+      - backend
+    ports:
+      - "9567:9567"
+    depends_on:
+      - es
+    restart: unless-stopped
+
+networks:
+  backend:
+    driver: bridge
+
